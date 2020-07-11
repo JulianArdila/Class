@@ -1,0 +1,30 @@
+body {
+    font: 10px;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+p {
+    font-size: 12ppx;
+    color: #0000FF;
+    text-align: left;
+}
+
+h1 {
+    color: #FF0000;
+    text-align: left;
+}
+
+.clase1 {
+    font-style: italic;
+    font-size: 20px;
+    border-bottom: 1px #000000 dashed;
+    text-align: left;
+}
+
+#estilo1 {
+    color: #FFFFFF;
+    font-size: 15px;
+    background-color: #000000;
+    text-align: left;
+}

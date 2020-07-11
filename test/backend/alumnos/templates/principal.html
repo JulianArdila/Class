@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-
+fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+<title>Formulario sin ajax</title>
+</head>
+<body>
+<div class="container">
+<div class="jumbotron">
+<h1 class="display-4">Registra tu primer alumno!</h1>
+<p class="lead">Por medio de este formulario:</p>
+
+<hr class="my-4">
+<form action="/v2/alumnos/" method="POST">
+<div class="form-group">
+<label for="nombre">Nombre</label>
+<input type="text" class="form-control" id="nombre" name="nombre"
+placeholder="Ingrese nombre">
+</div>
+<div class="form-group">
+<label for="codigo">Código</label>
+<input type="text" class="form-control" id="codigo" name="codigo"
+placeholder="Ingrese código">
+</div>
+<div class="form-group">
+<label for="curso">Curso</label>
+<input type="text" class="form-control" id="curso" name="curso"
+placeholder="Ingrese curso">
+</div>
+<button type="submit" class="btn btn-primary">Registrar</button>
+{% csrf_token %}
+</form>
+<hr class="my-4">
+<table class="table table-bordered">
+<thead>
+<th>Nombre</th>
+<th>Codigo</th>
+<th>Curso</th>
+</thead>
+<tbody>
+{% for dato in alumnos %}
+<tr>
+<td>{{ dato.nombre }}</td>
+<td>{{ dato.codigo }}</td>
+<td>{{ dato.curso }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></s
+cript>
+<script
+src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></scri
+pt>
+</body>
+</html>

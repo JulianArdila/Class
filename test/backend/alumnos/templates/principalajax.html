@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-
+fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<title>Formulario con ajax</title>
+</head>
+<body>
+<div class="container">
+<div class="jumbotron">
+<h1 class="display-4">Registra tu primer alumno con ajax!</h1>
+<p class="lead">Por medio de este formulario:</p>
+<hr class="my-4">
+<form method="POST">
+<div class="form-group">
+<label for="nombre">Nombre</label>
+<input type="text" class="form-control" id="nombre" name="nombre"
+placeholder="Ingrese nombre">
+</div>
+<div class="form-group">
+<label for="codigo">Código</label>
+<input type="text" class="form-control" id="codigo" name="codigo"
+placeholder="Ingrese código">
+</div>
+<div class="form-group">
+<label for="curso">Curso</label>
+<input type="text" class="form-control" id="curso" name="curso"
+placeholder="Ingrese curso">
+</div>
+<button type="button" class="btn btn-primary" onclick="registrarAlumno()">Registrar</button>
+<button type="button" class="btn btn-success"
+onclick="listarAlumnos()">Listar</button>
+{% csrf_token %}
+</form>
+<hr class="my-4">
+<div id="alumnosajax"></div>
+</div>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+<script
+src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+></script>
+<script type="text/javascript">
+function listarAlumnos() {
+$.get( "/v2/alumnos/").done(function( response ) {
+var html='';
+html+='<table class="table table-bordered">';
+html+='<thead>';
+html+='<th>#</th>';
+html+='<th>Nombre</th>';
+html+='<th>Codigo</th>';
+html+='<th>Curso</th>';
+html+='</thead>';
+html+='<tbody>';
+for(dato in response){
+html+='<tr>';
+html+='<td>'+response[dato].id+'</td>';
+html+='<td>'+response[dato].nombre+'</td>';
+html+='<td>'+response[dato].codigo+'</td>';
+html+='<td>'+response[dato].curso+'</td>';
+html+='</tr>';
+}
+html+='</tbody>';
+html+='</table>';
+$("#alumnosajax").html(html);
+});
+}
+
+function registrarAlumno() {
+var nombre=$("#nombre").val();
+var codigo=$("#codigo").val();
+var curso=$("#curso").val();
+var csrfmiddlewaretoken=$( "input[name='csrfmiddlewaretoken']"
+).val();
+$.ajax({
+method: "POST",
+url: "/v2/alumnos/",
+data:  { nombre:nombre, codigo:codigo, curso:curso,
+csrfmiddlewaretoken: csrfmiddlewaretoken
+}})
+.done(function( msg ) {
+    alert( "Data Saved: " + msg );
+    listarAlumnos();
+});
+/*
+$.post( "/v2/alumnos/", { nombre:nombre, codigo:codigo, curso:curso,
+csrfmiddlewaretoken: csrfmiddlewaretoken
+}).done(function( data ) {
+    listarAlumnos();
+});
+*/
+}
+</script>
+</body>
+</html>
