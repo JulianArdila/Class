@@ -29,6 +29,5 @@ urlpatterns = [
     url('api/', include('rest_auth.urls')),
     path('principal/', principal),
     url('v2/',include(urlV2)),
-    url('v3/', include(('user.urls','user'))),
     url('principalajax/', principalajax),
 ]

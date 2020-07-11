@@ -1,6 +1,5 @@
 
 from django.shortcuts import render
-from django.shortcuts import render_to_response
 from alumnos.models import Alumno, Ciudad
 from rest_framework import generics
 from alumnos.serializers import AlumnoSerializer

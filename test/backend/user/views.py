@@ -9,7 +9,7 @@ from rest_framework import generics
 @permission_classes((IsPostOrIsAuthenticated, ))
 class UserList(generics.ListCreateAPIView):
     serializer_class = UserSerializer
-    queryset = User.objects.all()
+    queryset = User.objects.all().exclude(is_superuser=1)
 
 class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
