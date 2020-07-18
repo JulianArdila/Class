@@ -25,7 +25,7 @@ SECRET_KEY = '^4hdyb39^uqm)wkiqpd!*0@6x&vcl-*rkt5ogibb)y%hjx-mvi'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -58,17 +58,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_WHITELIST = (
-    'https://localhost:8100',
-)
-
-CORS_ALLOW_METHODS = (
-    'DELETE',
-    'GET',
-    'PATCH',
-    'POST',
-    'PUT',
-)
 
 AUTH_USER_MODEL = "user.User" 
 
@@ -125,6 +114,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
@@ -152,3 +143,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = 'D:\\Documents\\Class\\test\\backend\\media'
+MEDIA_URL = '/media/'

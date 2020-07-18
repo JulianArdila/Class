@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from alumnos.views import principal, principalajax
 from django.conf.urls import url, include
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlV2 = [
     url(r'^', include(('alumnos.urls','alumnos'))),
@@ -31,3 +34,6 @@ urlpatterns = [
     url('v2/',include(urlV2)),
     url('principalajax/', principalajax),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
