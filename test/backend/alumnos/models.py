@@ -1,4 +1,7 @@
 from django.db import models
+from django_google_maps import fields as map_fields
+from escuela.models import Escuela
+
 
 class Ciudad(models.Model):
     nombre = models.CharField(max_length=200)
@@ -17,11 +20,9 @@ class Alumno(models.Model):
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     ciudad = models.ForeignKey(Ciudad,on_delete=models.CASCADE,related_name='alumno',null=True, blank=True)
     imagen = models.ImageField(upload_to='Alumnos/', blank=True, null=True)
-
-    def __str__(self):
-        return self.nombre
-
-
+    cc_file = models.FileField("Documento", upload_to='Alumnos/', blank=True, null=True)
+    escuela = models.ForeignKey(Escuela,on_delete=models.CASCADE, blank=True, null=True, related_name='alumnos')
+    
 class Classroom(models.Model):
     fecha_creacion = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     

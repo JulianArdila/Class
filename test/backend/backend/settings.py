@@ -42,9 +42,11 @@ INSTALLED_APPS = [
     'rest_auth',
     'rest_framework.authtoken',
     'corsheaders',
+    'django_google_maps',
 
     'alumnos',
     'user',
+    'escuela'
 ]
 
 MIDDLEWARE = [
@@ -146,3 +148,5 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = 'D:\\Documents\\Class\\test\\backend\\media'
 MEDIA_URL = '/media/'
+
+GOOGLE_MAPS_API_KEY = 'AIzaSyA6--nJzwtDNsrEfg5hrAWTsYyRnCTLiTI'

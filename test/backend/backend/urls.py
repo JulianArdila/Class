@@ -24,6 +24,7 @@ from django.conf.urls.static import static
 urlV2 = [
     url(r'^', include(('alumnos.urls','alumnos'))),
     url(r'^', include(('user.urls','user'))),
+    url(r'^', include(('escuela.urls','escuela'))),
 ]
 
 
