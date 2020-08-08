@@ -22,16 +22,5 @@ class UserSerializer(serializers.ModelSerializer):
             'id':1
         }
         group = Group.objects.get(**kwargs)
-        #kwargs['parametro_2'] = 5
-        #args = (1, )
-        #self.prueba(parametro_1=2, parametro_2=4,*args,**kwargs)
-        #group = Group.objects.get(id=1)
         group.user_set.add(user)
         return user
-
-    def prueba(self, parametro_1, parametro_2= 2, *args, **kwargs):
-        print(parametro_1)
-        print(parametro_2)
-        print(args)
-        print(kwargs.pop('id', None))
-        pass
