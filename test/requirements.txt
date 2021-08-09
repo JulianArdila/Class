@@ -89,7 +89,7 @@ python-http-client==3.2.5
 python-magic-bin==0.4.14
 python3-openid==3.1.0
 pytz==2019.3
-pywin32==228
+pywin32==301
 pywinpty==0.5.7
 PyYAML==5.3
 pyzmq==19.0.2
